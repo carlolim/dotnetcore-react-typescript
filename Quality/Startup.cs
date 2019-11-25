@@ -41,7 +41,7 @@ namespace Quality
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "clientapp-typescript/build";
+                configuration.RootPath = "ClientApp/build";
             });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient(s => s.GetService<IHttpContextAccessor>().HttpContext.User);
@@ -102,7 +102,7 @@ namespace Quality
 
             app.UseSpa(spa =>
             {
-                spa.Options.SourcePath = "clientapp-typescript";
+                spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
                 {

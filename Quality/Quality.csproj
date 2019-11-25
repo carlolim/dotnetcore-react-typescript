@@ -5,7 +5,7 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
-    <SpaRoot>clientapp-typescript\</SpaRoot>
+    <SpaRoot>ClientApp\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
@@ -26,6 +26,13 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="ClientApp\package-lock.json" />
+    <None Include="ClientApp\package.json" />
+    <None Include="ClientApp\public\manifest.json" />
+    <None Include="ClientApp\tsconfig.json" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,44 @@
+.terminal {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5px;
+    border: solid 1px #fff;
+    background-color: black;
+    color: white;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.terminal code {
+  display: block;
+}
+
+.terminal input {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  color: white;
+  font-family: "Courier New"; 
+  font-size: 18px;
+}
+
+.terminal input:focus {
+  outline: none;
+}
+
+.instruction {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.instruction code {
+  background: #e9e9e9;
+  padding: 3px;
+  border: solid 1px #cacaca;
+  border-radius: 5px;
+}
+
+.instruction ul {
+  line-height: 30px;
+}
