@@ -39,6 +39,36 @@ namespace Quality
             }
         }
     }
+    public class IsLoggedInAttribute : TypeFilterAttribute
+    {
+        public IsLoggedInAttribute() : base(typeof(ExecuteValidation))
+        {
+
+        }
+
+        public class ExecuteValidation : IAuthorizationFilter
+        {
+            private readonly IClaimsHelper _claimsHelper;
+            public ExecuteValidation(IClaimsHelper claimsHelper)
+            {
+                _claimsHelper = claimsHelper;
+            }
+
+            public void OnAuthorization(AuthorizationFilterContext context)
+            {
+                if (_claimsHelper.UserId == 0)
+                {
+                    // status code: 401 unauthorized, 403 authorized but not allowed
+                    context.HttpContext.Response.StatusCode = 401;
+                    context.Result = new JsonResult(new Result
+                    {
+                        IsSuccess = false,
+                        Message = "Unauthorized"
+                    });
+                }
+            }
+        }
+    }
 
     public class MyAuthorizeAttribute : TypeFilterAttribute
     {

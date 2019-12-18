@@ -13,3 +13,11 @@ export const login = (data : ILoginDto) => {
         })
     });
 }
+
+export const logout = () => {
+    return new Promise<IResult>((resolve, reject) => {
+        post<IResult>("/api/user/logout", {})
+        .then(response => resolve(response.parsedBody))
+        .catch(e => reject(e));
+    });
+}

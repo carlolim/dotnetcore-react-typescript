@@ -1,10 +1,10 @@
 import { ILoginDto } from "../types/account";
-import { login } from "../services/account-services";
+import { login, logout } from "../services/account-services";
 import { allNovels, addNovel } from "../services/novel-services";
-import novel, { INewNovelDto } from "../types/novel";
+import { INewNovelDto } from "../types/novel";
 import { INewGenreDto } from "../types/genre";
 import { addGenre, allGenres } from "../services/genre-services";
-import { IChapterDto, INewChapterDto } from "../types/chapter";
+import { INewChapterDto } from "../types/chapter";
 import { byNovelId, addChapter } from "../services/chapter-services";
 
 export const listNovelsCommand = async () : Promise<string[]> => {
@@ -50,6 +50,17 @@ export const loginCommand = async (cmd: string): Promise<string[]> => {
         result.push(loginResult.message);
     } catch (e) {
         result.push('> Invalid username or password');
+    }
+    return result;
+}
+
+export const logoutCommand = async () : Promise<string[]> => {
+    var result : string[] = [];
+    try {
+        var logoutResult = await logout();
+        result.push(logoutResult.message);
+    } catch (e) {
+        result.push('> An error occured while logging out :(');
     }
     return result;
 }

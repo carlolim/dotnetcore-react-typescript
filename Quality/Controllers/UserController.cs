@@ -52,6 +52,19 @@ namespace Quality.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("logout")]
+        [IsLoggedIn]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+
+            return new JsonResult(new Result
+            {
+                
+            });
+        }
+
         private async Task SetIdentity(User user)
         {
             var claims = new[]

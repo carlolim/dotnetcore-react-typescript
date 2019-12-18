@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loginCommand, listNovelsCommand, addNovelCommand, listGenresCommand, addGenreCommand, listChapterCommand, addChapterCommand } from '../business/command-line-business';
+import { loginCommand, listNovelsCommand, addNovelCommand, listGenresCommand, addGenreCommand, listChapterCommand, addChapterCommand, logoutCommand } from '../business/command-line-business';
 
 export default class CommandLine extends Component<{}, CommandLineState> {
     state: CommandLineState = {
@@ -24,6 +24,9 @@ export default class CommandLine extends Component<{}, CommandLineState> {
         }
         else if (cmd.startsWith("login")) {
             result = await loginCommand(cmd);
+        }
+        else if (cmd === "logout") {
+            result = await logoutCommand();
         }
         else if (cmd.startsWith("create novel")) {
             result = await addNovelCommand(cmd);
